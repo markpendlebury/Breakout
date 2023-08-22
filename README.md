@@ -18,7 +18,7 @@ Given Unitys cross platform nature it should compile on any platform. My main ta
  - [x] Game over detection
  - [x] Game win detection
  - [ ]  Countdown to start new game
- - [ ]  Start new game on gameover/gamewin
+ - [x]  Start new game on gameover/gamewin
  - [ ]  Points system
  - [ ] Additional levels / difficulties 
 	 - [ ] Smaller racket
