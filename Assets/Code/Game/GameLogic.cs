@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,10 +7,30 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
     GameObject[] bricks;
+    GameObject ball;
+    GameObject player;
+    public GameObject newGamePanel;
+    public GameObject gameStartCountdownPanel;
     public TMP_Text gameOverText;
     public TMP_Text winnerText;
-    public GameObject newGamePanel;
+    public TMP_Text countdownText;
 
+    private int countdown = 3;
+
+
+    private void Start()
+    {
+        // Get the ball and player, 
+        // and deactivate them until the 
+        // countdown is complete
+        ball = GameObject.FindGameObjectWithTag("Ball");
+        player = GameObject.FindGameObjectWithTag("Player");
+        ball.SetActive(false);
+        player.SetActive(false);
+
+        // start the countdown
+        StartCoroutine(Countdown(countdown));
+    }
     void Update()
     {
         WinDetection();
@@ -51,6 +73,35 @@ public class GameLogic : MonoBehaviour
     public void OnNewGame()
     {
         Debug.Log("Starting a new game...");
+        // Load the GameScene (main game)
         SceneManager.LoadScene("GameScene");
+    }
+
+    IEnumerator Countdown(int count)
+    {
+        // loop until count is 0
+        while (count >= 0)
+        {
+            // If count is zero display GO
+            // else display the countdown value
+            if (count == 0)
+            {
+                countdownText.text = "GO!";
+            }
+            else
+            {
+                countdownText.text = string.Format("{0}", count);
+            }
+            // Wait for 1 second
+            yield return new WaitForSeconds(1);
+            count--;
+        }
+
+        // Start the game: 
+        ball.SetActive(true);
+        player.SetActive(true);
+
+        // Remove the countdown panel
+        Destroy(gameStartCountdownPanel);
     }
 }
