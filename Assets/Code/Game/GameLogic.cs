@@ -23,12 +23,15 @@ public class GameLogic : MonoBehaviour
         // Do we have any bricks left?
         if (bricks.Length <= 0)
         {
-            Debug.Log("Winner!");
-            // Display the winner text
-            // TODO this should be a 
-            // winner menu
-            newGamePanel.SetActive(true);
-            winnerText.text = "Winner!";
+            if(newGamePanel != null)
+            {
+                Debug.Log("Winner!");
+                // Display the winner text
+                // TODO this should be a 
+                // winner menu
+                newGamePanel.SetActive(true);
+                winnerText.text = "Winner!";
+            }
         }
     }
     
@@ -37,10 +40,12 @@ public class GameLogic : MonoBehaviour
         // Display game over text
         // TODO: this should show
         // the gameover menu
-
-        newGamePanel.SetActive(true);
-        gameOverText.text = "Game Over!";
-        Debug.Log("Game over!");
+        if (newGamePanel != null)
+        {
+            newGamePanel.SetActive(true);
+            gameOverText.text = "Game Over!";
+            Debug.Log("Game over!");
+        }
     }
 
     public void OnNewGame()
