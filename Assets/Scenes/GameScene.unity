@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 382437442}
   m_Layer: 0
   m_Name: GameLogic
-  m_TagString: Untagged
+  m_TagString: GameLogic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1503,6 +1503,7 @@ MonoBehaviour:
   gameOverText: {fileID: 512796197}
   winnerText: {fileID: 512796197}
   countdownText: {fileID: 1596113463}
+  countdownEnabled: 0
 --- !u!4 &382437441
 Transform:
   m_ObjectHideFlags: 0
@@ -1531,6 +1532,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 344635998}
+  item1: {fileID: 721582565}
+  item2: {fileID: 1012401852}
+  gameLogic: {fileID: 382437440}
 --- !u!1 &421572113
 GameObject:
   m_ObjectHideFlags: 0

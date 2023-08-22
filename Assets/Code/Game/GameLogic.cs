@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Threading;
 using TMPro;
@@ -15,11 +16,17 @@ public class GameLogic : MonoBehaviour
     public TMP_Text winnerText;
     public TMP_Text countdownText;
 
-    private int countdown = 3;
+    private int countdown;
+
+    public bool countdownEnabled;
 
 
     private void Start()
     {
+        // initialize: 
+        countdown = 3;
+        countdownEnabled = true;
+
         // Get the ball and player, 
         // and deactivate them until the 
         // countdown is complete
@@ -82,6 +89,7 @@ public class GameLogic : MonoBehaviour
         // loop until count is 0
         while (count >= 0)
         {
+            countdownEnabled = true;
             // If count is zero display GO
             // else display the countdown value
             if (count == 0)
@@ -101,7 +109,10 @@ public class GameLogic : MonoBehaviour
         ball.SetActive(true);
         player.SetActive(true);
 
+        countdownEnabled = false;
+
         // Remove the countdown panel
         Destroy(gameStartCountdownPanel);
     }
+
 }
