@@ -29,7 +29,6 @@ public class PauseMenu : MonoBehaviour
 
     public void OnResumeButton()
     {
-        Debug.Log("Resume button pressed");
         DoPause();
     }
 
@@ -37,7 +36,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OnQuitButton()
     {
-        Debug.Log("Quit button pressed");
+        Debug.Log("Quitting...");
 
         // Quit the game
         Application.Quit(); 
