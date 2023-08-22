@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
+    public TMP_Text gameOverText;
 
     GameObject[] bricks;
 
@@ -26,5 +27,11 @@ public class GameLogic : MonoBehaviour
             Debug.Log("Winner!");
             winnerText.text = "Winner!";
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverText.text = "Game Over!";
+        Debug.Log("Game over!");
     }
 }

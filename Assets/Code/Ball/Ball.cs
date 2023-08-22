@@ -6,8 +6,9 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float ballSpeed;
-    public TMP_Text gameOverText;
 
+    [SerializeField]
+    public GameLogic gameLogic;
 
     // Start is called before the first frame update
     void Start()
@@ -32,23 +33,7 @@ public class Ball : MonoBehaviour
             // Set Velocity with dir * speed
             GetComponent<Rigidbody2D>().velocity = dir * ballSpeed;
         }
-
-
-        // Did we hit the game over wall?
-
-        if (collision.gameObject.name == "GameOverWall")
-        {
-            
-        }
     }
-
-    private void OnBecameInvisible()
-    {
-        gameOverText.text = "Game Over!";
-        Debug.Log("Game over!");
-    }
-
-
 
     float hitFactor(Vector2 ballPos, Vector2 playerPosition, float playerWidth)
     {
@@ -59,5 +44,12 @@ public class Ball : MonoBehaviour
         // ===================  <- player
         //
         return (ballPos.x - playerPosition.x) / playerWidth;
+    }
+
+    // This is called when the
+    // ball goes off the screen. 
+    private void OnBecameInvisible()
+    {
+        gameLogic.GameOver();
     }
 }
